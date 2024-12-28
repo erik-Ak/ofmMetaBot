@@ -39,11 +39,11 @@ export const handlers = (bot: Telegraf<Context>) => {
     try {
       await downloadFile(ctx, fileId, filePath);
       const fileHash = getFileHash(filePath);
-      // if (processedFiles.has(fileHash)) {
-      //   fs.unlinkSync(filePath);
-      //   await ctx.reply('Этот файл уже был обработан.');
-      //   return;
-      // }
+      if (processedFiles.has(fileHash)) {
+        fs.unlinkSync(filePath);
+        await ctx.reply("Этот файл уже был обработан.");
+        return;
+      }
       processedFiles.add(fileHash);
 
       fs.writeFileSync(
