@@ -4,10 +4,16 @@ import { downloadFile, getFileHash } from '../utils/utils';
 import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const processedFilesPath = path.join(__dirname, '../../processed_files.json');
 
 const processedFiles: Set<string> = new Set();
 
-const processedFilesPath = path.join(__dirname, '../../processed_files.json');
 if (fs.existsSync(processedFilesPath)) {
   const data = fs.readFileSync(processedFilesPath, 'utf-8');
   const ids: string[] = JSON.parse(data);
