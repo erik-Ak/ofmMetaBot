@@ -10,7 +10,7 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const processedFilesPath = path.join(__dirname, '../../processed_files.json');
+const processedFilesPath = path.join('/tmp', 'processed_files.json');
 
 const processedFiles: Set<string> = new Set();
 
@@ -56,7 +56,7 @@ export const handlers = (bot: Telegraf<Context>) => {
       fs.unlinkSync(outputPath);
     } catch (error) {
       console.error('Error processing video:', error);
-      await ctx.reply('Произошла ошибка при обработке видео.');
+      await ctx.reply(`Произошла ошибка при обработке видео: ${(error as Error).message}`);
     }
   });
 };
