@@ -19,7 +19,8 @@ export const downloadFile = async (
   if (!response.ok) {
     throw new Error(`Failed to download file: ${response.statusText}`);
   }
-  const buffer = await response.buffer();
+  const arrayBuffer = await response.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
   fs.writeFileSync(filePath, buffer);
 };
 
