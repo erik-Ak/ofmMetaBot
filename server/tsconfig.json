@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true, // Ensure this is true
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}
