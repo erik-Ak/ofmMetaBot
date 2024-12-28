@@ -5,6 +5,8 @@ import { handlers } from '../bot/handlers';
 import { setWebhook } from '../utils/utils';
 import ffmpeg from 'fluent-ffmpeg';
 import ffmpegInstaller from '@ffmpeg-installer/ffmpeg';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 dotenv.config();
 
@@ -21,7 +23,8 @@ const bot = new Telegraf<Context>(BOT_TOKEN);
 
 handlers(bot);
 
-setWebhook(bot, WEBHOOK_URL);
+// Remove or comment out the following line
+// setWebhook(bot, WEBHOOK_URL);
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
