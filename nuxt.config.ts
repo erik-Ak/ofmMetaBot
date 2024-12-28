@@ -5,7 +5,10 @@ export default defineNuxtConfig({
       webhookUrl: process.env.WEBHOOK_URL
     }
   },
+
   serverHandlers: [
     { route: '/api/telegram', handler: '~/server/api/telegram.ts' }
-  ]
+  ],
+
+  compatibilityDate: '2024-12-28'
 });
